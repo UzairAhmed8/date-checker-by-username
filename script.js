@@ -1,23 +1,30 @@
-function dobChecker(){
+function checkAge() {
 
-    let userDob = document.getElementById("dobInput").value
-    let monthsArr = ["January" , "February" , "March" , "April" , "May" , "June" , "July" , "August" , "September" , "October" , "November" , "December"]
+    let dob = new Date(document.getElementById("dob").value);
+    let today = new Date();
 
-    let currentSitutaions = new Date();
-    let userMonth = monthsArr[currentSitutaions.getMonth() + 1];
-    let userDate = currentSitutaions.getDate();
-    let userYear = currentSitutaions.getFullYear();
-
-    // console.log(`${userMonth} : ${userDate} : ${userYear}`)
-
-    if(currentSitutaions > 18){
-        alert("You Are 18+")
-    }else if(currentSitutaions == 18){
-        alert("You Are 18")
-    }else{
-        alert("You Are Elder than 18")
-        userDob + currentSitutaions
+    if (isNaN(dob)) {
+      document.getElementById("output").innerText = "Please select a valid date!";
+      return;
     }
-    document.getElementById("result").innerHTML = `${userMonth} : ${userDate} : ${userYear}`;
-    
-}
+
+    let age = today.getFullYear() - dob.getFullYear();
+    if (
+      today.getMonth() < dob.getMonth() ||
+      (today.getMonth() === dob.getMonth() && today.getDate() < dob.getDate())
+    ) {
+      age--;
+    }
+
+    let lastBday = new Date(today.getFullYear(), dob.getMonth(), dob.getDate());
+    if (today < lastBday) lastBday.setFullYear(today.getFullYear() - 1);
+
+    let nextBday = new Date(lastBday);
+    nextBday.setFullYear(lastBday.getFullYear() + 1);
+
+    let daysSince = Math.floor((today - lastBday) / (1000 * 60 * 60 * 24));
+    let daysUntil = Math.floor((nextBday - today) / (1000 * 60 * 60 * 24));
+
+    document.getElementById("output").innerHTML =
+      `Age: ${age}<br>Days since last birthday: ${daysSince}<br>Days until next birthday: ${daysUntil}`;
+  }

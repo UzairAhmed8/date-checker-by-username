@@ -4,16 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Date-Checker</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
-    <form onsubmit="dobChecker() ; return(false)">
-        <label>Enter Your D.O.B</label>
-        <input type="date" id="dobInput">
-        <button>submit</button>
-    </form>
-
-    <p id="result"></p>
+    <h3>Birthday Calculator</h3>
+<form onsubmit="checkAge() ;return(false)">
+    <div class="">
+        <input type="date" id="dob">
+    </div>
+    <div class="">
+        <button>Check</button>
+    </div>
+</form>
+<h3><sup style="font-size: 16px;font-family: sans-serif;">Made by</sup>Uzair Ahmed</h3>
+  <p id="output"></p>
     <script src="script.js"></script>
 </body>
 </html>

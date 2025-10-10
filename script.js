@@ -22,8 +22,8 @@ function checkAge() {
     let nextBday = new Date(lastBday);
     nextBday.setFullYear(lastBday.getFullYear() + 1);
 
-    let daysSince = Math.floor((today - lastBday) / (1000 * 60 * 60 * 24));
-    let daysUntil = Math.floor((nextBday - today) / (1000 * 60 * 60 * 24));
+    let daysSince = Math.ceil((today - lastBday) / (1000 * 60 * 60 * 24));
+    let daysUntil = Math.ceil((nextBday - today) / (1000 * 60 * 60 * 24));
 
     document.getElementById("output").innerHTML =
       `Age: ${age}<br>Days since last birthday: ${daysSince}<br>Days until next birthday: ${daysUntil}`;
